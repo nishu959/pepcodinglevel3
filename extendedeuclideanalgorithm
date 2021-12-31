@@ -1,0 +1,24 @@
+a = int(input())
+b = int(input())
+
+class pair():
+    def __init__(self, first = 1, second= 0, gcd = 1):
+        self.first = first
+        self.second = second
+        self.gcd = gcd
+        
+        
+def fun(a , b):
+    if b == 0:
+        return pair(1,0,a)
+    temp = fun(b ,  a % b)
+    p = pair()
+    
+    p.first = temp.second
+    p.second = temp.first - (a//b) * temp.second
+    p.gcd = temp.gcd
+      
+    return p
+
+ans = fun(a , b)
+print(ans.first , ans.second)
